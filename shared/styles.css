@@ -1,0 +1,837 @@
+/* =========================================================================
+   PVA Free Training — NDIS VA Foundations (adapted from the SMM pathway)
+   Shared design system
+
+   Palette follows the established PVA Free Training system:
+   deep forest green + secondary sage green + warm kraft-paper neutrals,
+   with a folder-tab / stamp motif for navigation and completion states.
+
+   This pathway uses the established system WITHOUT the cartoon/avatar
+   treatment used elsewhere — a quieter, more professional variant, per
+   the SMM training brief's visual-direction note.
+   ========================================================================= */
+
+:root {
+  /* Brand core */
+  --forest: #1F3D2F;
+  --forest-dark: #16291F;
+  --sage: #6E7F3F;
+  --sage-light: #97A868;
+
+  /* Kraft paper neutrals */
+  --kraft: #F3EEE2;
+  --kraft-dark: #E7DFCB;
+  --paper: #FFFDF7;
+  --ink: #26291F;
+  --ink-soft: #4B4E3F;
+  --line: #D9D0B8;
+
+  /* Accents */
+  --gold: #B08A3E;
+  --rust: #A24D3D;
+  --ok: #3E6E4E;
+  --warn: #B0742E;
+
+  /* Type */
+  --font-head: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Shape */
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow-card: 0 1px 0 var(--line), 0 6px 16px rgba(31, 61, 47, 0.08);
+  --shadow-tab: 0 2px 6px rgba(31, 61, 47, 0.12);
+
+  --max-width: 920px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--kraft);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--forest); }
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  color: var(--forest-dark);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* -------------------------------------------------------------------------
+   Top route bar — home link + breadcrumb, consistent with the other
+   PVA Free Training pathways
+   ------------------------------------------------------------------------- */
+.route-bar {
+  background: var(--forest);
+  color: #EFE9D6;
+}
+.route-track {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+.route-track a {
+  color: #EFE9D6;
+  text-decoration: none;
+  opacity: 0.85;
+}
+.route-track a:hover { opacity: 1; text-decoration: underline; }
+.route-track .sep { opacity: 0.5; }
+.route-track .current { opacity: 1; font-weight: 600; }
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #EFE9D6;
+  text-decoration: none;
+  font-weight: 600;
+}
+.home-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* -------------------------------------------------------------------------
+   Page header
+   ------------------------------------------------------------------------- */
+.page-header {
+  background: linear-gradient(180deg, var(--forest) 0%, var(--forest-dark) 100%);
+  color: #F6F2E4;
+  padding: 40px 0 56px;
+}
+.page-header .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--sage-light);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.page-header h1 {
+  color: #FBF8EE;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+}
+.page-header .lede {
+  color: #DCD6BE;
+  max-width: 640px;
+  font-size: 1.05rem;
+}
+
+/* -------------------------------------------------------------------------
+   Cards
+   ------------------------------------------------------------------------- */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+}
+.card + .card { margin-top: 18px; }
+
+/* -------------------------------------------------------------------------
+   Folder-tab motif — used for course-map lesson cards and step navigation
+   ------------------------------------------------------------------------- */
+.folder-tab {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 22px;
+  box-shadow: var(--shadow-tab);
+}
+.folder-tab::before {
+  content: attr(data-tab);
+  position: absolute;
+  top: -14px;
+  left: 18px;
+  background: var(--sage);
+  color: #FFFDF7;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px 999px 0 0 / 999px;
+  border-radius: 8px 8px 2px 2px;
+}
+.folder-tab[data-state="done"]::before { background: var(--ok); }
+.folder-tab[data-state="current"]::before { background: var(--forest); }
+
+/* -------------------------------------------------------------------------
+   Stamp motif — completion indicators
+   ------------------------------------------------------------------------- */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 2px solid var(--ok);
+  color: var(--ok);
+  border-radius: 999px;
+  padding: 3px 12px 3px 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transform: rotate(-2deg);
+  background: rgba(62, 110, 78, 0.06);
+}
+.stamp.pending {
+  border-color: var(--line);
+  color: var(--ink-soft);
+  background: transparent;
+  transform: none;
+}
+.stamp svg { width: 14px; height: 14px; fill: currentColor; }
+
+/* -------------------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: var(--forest);
+  color: #FBF8EE;
+  box-shadow: 0 3px 0 var(--forest-dark);
+}
+.btn-primary:hover { background: var(--forest-dark); }
+.btn-secondary {
+  background: var(--paper);
+  color: var(--forest);
+  border: 2px solid var(--forest);
+}
+.btn-secondary:hover { background: var(--kraft-dark); }
+.btn-ghost {
+  background: transparent;
+  color: var(--forest);
+  border: 2px solid var(--line);
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+
+/* -------------------------------------------------------------------------
+   Progress rail (course-level and lesson-level)
+   ------------------------------------------------------------------------- */
+.progress-rail {
+  background: var(--kraft-dark);
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.progress-rail > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--sage), var(--ok));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+
+/* -------------------------------------------------------------------------
+   Lesson step panels
+   ------------------------------------------------------------------------- */
+.step-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 22px 0 8px;
+}
+.step-chip {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.step-chip.is-current {
+  border-color: var(--forest);
+  color: var(--forest);
+  background: rgba(31, 61, 47, 0.06);
+}
+.step-chip.is-done {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+.step-panel { display: none; }
+.step-panel.is-active { display: block; }
+
+.step-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--sage);
+  margin-bottom: 6px;
+}
+
+.key-idea {
+  border-left: 4px solid var(--sage);
+  background: rgba(110, 127, 63, 0.08);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--forest-dark);
+  margin: 16px 0;
+}
+
+.callout {
+  border: 1.5px dashed var(--gold);
+  background: rgba(176, 138, 62, 0.08);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.callout strong { color: var(--rust); }
+
+/* -------------------------------------------------------------------------
+   Tables
+   ------------------------------------------------------------------------- */
+table.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 0.92rem;
+}
+table.ref-table th,
+table.ref-table td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+table.ref-table th {
+  background: var(--kraft-dark);
+  color: var(--forest-dark);
+  font-family: var(--font-head);
+  font-weight: 600;
+}
+table.ref-table tr:nth-child(even) td { background: #FBF8EE; }
+
+/* -------------------------------------------------------------------------
+   Exercise components
+   ------------------------------------------------------------------------- */
+.exercise-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: var(--paper);
+}
+.exercise-item .prompt { font-weight: 600; margin-bottom: 10px; }
+
+.choice-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice-btn {
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.choice-btn:hover { border-color: var(--sage); }
+.choice-btn.selected {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: #FBF8EE;
+}
+.choice-btn.correct {
+  border-color: var(--ok);
+  background: rgba(62, 110, 78, 0.15);
+  color: var(--forest-dark);
+}
+.choice-btn.incorrect {
+  border-color: var(--rust);
+  background: rgba(162, 77, 61, 0.12);
+  color: var(--rust);
+}
+
+.feedback-box {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  display: none;
+}
+.feedback-box.show { display: block; }
+.feedback-box.ok { background: rgba(62, 110, 78, 0.12); color: var(--forest-dark); }
+.feedback-box.info { background: rgba(31, 61, 47, 0.06); color: var(--ink-soft); }
+
+textarea.text-response {
+  width: 100%;
+  min-height: 90px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  resize: vertical;
+  background: var(--paper);
+  color: var(--ink);
+}
+textarea.text-response:focus { border-color: var(--sage); }
+
+.dragzone {
+  border: 2px dashed var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 52px;
+  background: var(--kraft);
+}
+.dragzone.drag-over { border-color: var(--sage); background: rgba(110,127,63,0.1); }
+.drag-chip {
+  display: inline-block;
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 4px;
+  cursor: grab;
+  font-size: 0.88rem;
+}
+.drag-chip:active { cursor: grabbing; }
+
+.bin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.bin {
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+.bin h4 {
+  margin: 0;
+  padding: 8px 10px;
+  background: var(--kraft-dark);
+  border-radius: 8px 8px 0 0;
+  font-size: 0.82rem;
+  color: var(--forest-dark);
+}
+.bin-body { padding: 8px; min-height: 46px; }
+
+/* -------------------------------------------------------------------------
+   Work-sample builder (Apply step)
+   ------------------------------------------------------------------------- */
+.builder-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.builder-table th {
+  text-align: left;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  padding: 6px 8px;
+  border-bottom: 2px solid var(--line);
+}
+.builder-table td { padding: 6px 8px; vertical-align: top; }
+.builder-table input, .builder-table textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  background: var(--paper);
+}
+.builder-table textarea { min-height: 40px; resize: vertical; }
+.row-remove {
+  background: none;
+  border: none;
+  color: var(--rust);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 8px;
+}
+
+.export-box {
+  background: var(--kraft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 14px;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  font-family: "Courier New", monospace;
+}
+
+.save-reminder {
+  background: rgba(176, 138, 62, 0.12);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-top: 12px;
+  color: var(--ink-soft);
+}
+
+/* -------------------------------------------------------------------------
+   Lesson list / course map
+   ------------------------------------------------------------------------- */
+.lesson-grid { display: grid; gap: 14px; margin-top: 20px; }
+.lesson-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.lesson-card:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(31,61,47,0.12); }
+.lesson-card.is-locked-soon {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+.lesson-num {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: #FBF8EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+.lesson-card.is-locked-soon .lesson-num { background: var(--line); color: var(--ink-soft); }
+.lesson-card .lesson-info { flex: 1; }
+.lesson-card .lesson-info h3 { margin: 0 0 2px; font-size: 1.02rem; }
+.lesson-card .lesson-info p { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+.lesson-card .lesson-status { flex: none; }
+
+/* -------------------------------------------------------------------------
+   Lesson nav footer
+   ------------------------------------------------------------------------- */
+.lesson-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+/* -------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+.site-footer {
+  margin-top: 48px;
+  padding: 28px 0 60px;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  text-align: center;
+}
+.site-footer a { color: var(--forest); }
+
+/* -------------------------------------------------------------------------
+   Utility
+   ------------------------------------------------------------------------- */
+.no-print { }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
+}
+
+@media print {
+  .route-bar, .step-nav, .btn-row, .no-print { display: none !important; }
+  body { background: #fff; }
+  .step-panel { display: block !important; }
+}
+
+@media (max-width: 640px) {
+  .page-header { padding: 28px 0 40px; }
+  .card, .folder-tab { padding: 16px; }
+  .lesson-card { flex-wrap: wrap; }
+  .builder-table, .builder-table thead { display: block; }
+  .builder-table thead { display: none; }
+  .builder-table tr {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  .builder-table td {
+    display: block;
+    padding: 4px 4px;
+  }
+  .builder-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 2px;
+  }
+}
+
+/* =========================================================================
+   NDIS VA Foundations additions
+   Everything above is the SMM PVA Free Training system, unchanged.
+   Additions below reuse its tokens and only add what NDIS content needs:
+   rendered long-form lesson content, fillable tables, model-answer
+   disclosures, module cards, notes boxes and the Export / Restore panel.
+   ========================================================================= */
+
+/* Skip link */
+.skip-link {
+  position: absolute; left: 12px; top: -48px;
+  background: var(--paper); color: var(--forest); font-weight: 700;
+  padding: 8px 14px; border-radius: 8px; z-index: 10; text-decoration: none;
+}
+.skip-link:focus { top: 8px; }
+
+/* Route bar breadcrumb text (non-link crumb) */
+.route-track .crumb { opacity: 0.85; }
+.route-track a.crumb-link { color: #EFE9D6; text-decoration: none; opacity: 0.85; }
+.route-track a.crumb-link:hover { opacity: 1; text-decoration: underline; }
+
+.page-header .header-meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
+.page-header .stamp { background: rgba(255,253,247,0.92); }
+.page-header .stamp.pending { background: rgba(255,253,247,0.9); color: var(--ink-soft); }
+.stamp.in-progress { border-color: var(--sage); color: var(--sage); }
+.eyebrow-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  background: var(--gold); color: #FFFDF7; padding: 3px 10px; border-radius: 6px;
+}
+
+main.container { padding-top: 8px; }
+section[id], .step-panel h2 { scroll-margin-top: 16px; }
+
+/* ---- Rendered course content ---- */
+.md h3 { font-size: 1.12rem; margin-top: 1.4em; }
+.md h4 { font-size: 1rem; margin-top: 1.2em; }
+.md h5 { font-size: 0.95rem; margin-top: 1em; font-family: var(--font-body); font-weight: 700; }
+.md > :first-child { margin-top: 0; }
+.md ul, .md ol { padding-left: 1.4em; margin: 0 0 1em; }
+.md li { margin-bottom: 0.3em; }
+.md li > p { margin-bottom: 0.4em; }
+.md hr { border: none; border-top: 1px dashed var(--line); margin: 22px 0; }
+.md code {
+  font-family: "Courier New", monospace; font-size: 0.88em;
+  background: var(--kraft-dark); border: 1px solid var(--line);
+  border-radius: 4px; padding: 1px 5px; color: var(--forest-dark);
+  overflow-wrap: anywhere;
+}
+.md pre {
+  background: var(--kraft); border: 1px solid var(--line); border-radius: 8px;
+  padding: 14px 16px; overflow-x: auto; font-size: 0.88rem; line-height: 1.5;
+}
+.md pre code { background: none; border: none; padding: 0; font-size: 1em; }
+.md a { overflow-wrap: anywhere; }
+.md strong { color: var(--forest-dark); }
+
+.md blockquote {
+  margin: 16px 0; padding: 12px 16px;
+  border-left: 4px solid var(--sage); background: rgba(110, 127, 63, 0.07);
+  border-radius: 0 8px 8px 0; color: var(--ink);
+}
+.md blockquote p:last-child { margin-bottom: 0; }
+.md blockquote.callout-fictional {
+  border: 1.5px dashed var(--gold); border-left-width: 1.5px;
+  background: rgba(176, 138, 62, 0.08); border-radius: 8px;
+}
+.md blockquote.callout-fictional strong { color: var(--rust); }
+
+.current-source-note {
+  border: 1.5px solid var(--forest); border-left-width: 5px;
+  background: rgba(31, 61, 47, 0.05); border-radius: 8px;
+  padding: 12px 16px; margin: 16px 0;
+}
+.current-source-note .cs-tag {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #FBF8EE; background: var(--forest); border-radius: 4px; padding: 2px 8px; margin-bottom: 6px;
+}
+.current-source-note p:last-child { margin-bottom: 0; }
+a.ext-link::after { content: " ↗"; font-size: 0.85em; }
+
+/* Tables: reference tables scroll inside their own wrapper on small screens */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; }
+.table-wrap table.ref-table { margin: 0; min-width: 460px; }
+.table-wrap:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* Fillable tables (empty cells in the source become inputs) */
+table.fill-table td.fill-cell { padding: 4px; background: var(--paper) !important; }
+table.fill-table td.fill-cell textarea {
+  width: 100%; min-height: 40px; resize: vertical;
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px;
+  font-family: var(--font-body); font-size: 0.88rem; background: #FFFFFF; color: var(--ink);
+}
+table.fill-table td.fill-cell textarea:focus { border-color: var(--sage); }
+.fill-hint { font-size: 0.8rem; color: var(--ink-soft); margin: -6px 0 14px; }
+
+/* Checklists from "- [ ]" items */
+ul.task-list { list-style: none; padding-left: 0; }
+ul.task-list li { margin-bottom: 8px; }
+ul.task-list label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+ul.task-list input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; flex: none; accent-color: var(--ok); }
+
+/* Model answers */
+details.model-answer {
+  border: 1.5px solid var(--sage); border-radius: 10px; background: var(--paper);
+  margin: 16px 0; overflow: hidden;
+}
+details.model-answer > summary {
+  cursor: pointer; padding: 12px 16px; font-weight: 700; color: var(--forest);
+  background: rgba(110, 127, 63, 0.08); list-style: none;
+}
+details.model-answer > summary::-webkit-details-marker { display: none; }
+details.model-answer > summary::before { content: "▸ "; }
+details.model-answer[open] > summary::before { content: "▾ "; }
+details.model-answer > .details-body { padding: 14px 16px 4px; }
+
+/* Wattlebird practice-file strip */
+.practice-strip {
+  display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 16px; margin: 18px 0 4px; font-size: 0.88rem;
+}
+.practice-strip strong { color: var(--forest-dark); }
+.practice-strip .btn { padding: 7px 14px; font-size: 0.85rem; }
+
+/* Notes boxes */
+.notes-box {
+  margin-top: 22px; padding: 14px 16px; border-radius: 10px;
+  background: var(--kraft); border: 1px solid var(--line);
+}
+.notes-box label { display: block; font-weight: 700; color: var(--forest-dark); margin-bottom: 6px; }
+.notes-box .notes-help { font-size: 0.82rem; color: var(--ink-soft); margin: 0 0 8px; }
+.notes-box textarea.text-response { min-height: 120px; }
+.save-status { font-size: 0.78rem; color: var(--ink-soft); margin-top: 6px; min-height: 1.2em; }
+
+/* Step chips are buttons here */
+button.step-chip { cursor: pointer; font-family: var(--font-body); }
+button.step-chip:hover { border-color: var(--sage); color: var(--forest); }
+.step-panel h2 { font-size: clamp(1.3rem, 2.6vw, 1.6rem); }
+.step-panel .panel-nav { justify-content: space-between; border-top: 1px dashed var(--line); padding-top: 18px; margin-top: 26px; }
+
+.lesson-pager {
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 0.9rem;
+}
+.lesson-pager a { color: var(--forest); font-weight: 600; text-decoration: none; }
+.lesson-pager a:hover { text-decoration: underline; }
+.lesson-pager .pager-next { margin-left: auto; text-align: right; }
+
+/* Module cards on the course map */
+.module-grid { display: grid; gap: 16px; margin-top: 20px; }
+.module-card .lesson-info p.module-lessons { margin-top: 4px; }
+.module-card .mini-rail { height: 6px; margin-top: 8px; max-width: 220px; }
+.lesson-card.is-complete .lesson-num { background: var(--ok); }
+.lesson-card .lesson-num.wide { width: auto; min-width: 42px; padding: 0 10px; border-radius: 21px; font-size: 0.9rem; }
+
+/* Progress page */
+.progress-row {
+  display: flex; align-items: center; gap: 12px; padding: 10px 4px;
+  border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none;
+}
+.progress-row:hover .progress-row-label { text-decoration: underline; }
+.progress-row-label { flex: 1; font-size: 0.92rem; }
+.progress-row-count { font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.warning-list li { margin-bottom: 6px; }
+.feedback-box.warn { background: rgba(162, 77, 61, 0.1); color: var(--rust); display: block; }
+.file-pick { display: block; margin-top: 8px; font-size: 0.9rem; }
+.file-pick input { margin-top: 6px; max-width: 100%; }
+.tools-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.tools-grid .card { margin: 0; }
+.tools-grid .card + .card { margin-top: 0; }
+.btn-danger { background: transparent; color: var(--rust); border: 2px solid var(--rust); }
+.btn-danger:hover { background: rgba(162, 77, 61, 0.08); }
+
+.storage-note { font-size: 0.82rem; color: var(--ink-soft); margin: 10px 0 0; }
+.callout.storage-blocked { margin-top: 20px; }
+
+/* Certification page */
+.route-closed {
+  border: 2px dashed var(--rust); border-radius: 10px; padding: 16px 18px;
+  background: rgba(162, 77, 61, 0.06); margin-top: 14px;
+}
+.route-closed strong { color: var(--rust); }
+
+@media (max-width: 640px) {
+  .route-track { font-size: 0.8rem; padding: 10px 16px; }
+  .container { padding: 0 16px; }
+  .table-wrap table.ref-table { font-size: 0.85rem; }
+  /* Fillable tables stack into labeled cards on phones */
+  .table-wrap.fill-wrap { overflow-x: visible; }
+  .table-wrap.fill-wrap table.fill-table { min-width: 0; }
+  table.fill-table thead { display: none; }
+  table.fill-table, table.fill-table tbody, table.fill-table tr, table.fill-table td { display: block; width: 100%; }
+  table.fill-table tr { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 10px; padding: 6px; background: var(--paper); }
+  table.fill-table td { border: none !important; padding: 4px 6px; background: transparent !important; }
+  table.fill-table td::before {
+    content: attr(data-label); display: block; font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-soft); margin-bottom: 2px;
+  }
+  .step-panel .panel-nav .btn { flex: 1 1 auto; justify-content: center; }
+  .progress-row { flex-wrap: wrap; }
+  .progress-row-label { flex-basis: 100%; }
+}
+
+@media print {
+  .practice-strip, .notes-box .save-status, .lesson-pager, .skip-link { display: none !important; }
+  .step-panel { page-break-inside: auto; }
+  details.model-answer:not([open]) > .details-body { display: none; }
+}

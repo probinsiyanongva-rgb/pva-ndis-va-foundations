@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Progress &amp; Backup | NDIS VA Foundations — PVA Free Training</title>
+<meta name="description" content="Export, restore or clear your NDIS VA Foundations progress. Progress is saved in this browser only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body data-root="../">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="route-bar" aria-label="Breadcrumb">
+  <div class="route-track">
+    <span class="crumb">PVA Free Training</span>
+    <span class="sep" aria-hidden="true">/</span>
+    <a class="home-btn" href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z"/></svg> NDIS VA Foundations</a>
+    <span class="sep" aria-hidden="true">/</span><span class="current" aria-current="page">Your progress &amp; backup</span>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="eyebrow">Local progress · Export · Restore</div>
+    <h1>Your progress &amp; backup</h1>
+    <p class="lede">Everything you save in this course stays in this browser. Export a backup so you can restore it later.</p>
+    
+  </div>
+</header>
+
+<main id="main" class="container" data-draft-scope="progress">
+
+<section class="folder-tab" data-tab="Overview" data-state="current" style="margin-top:30px;" aria-labelledby="ov-h">
+  <h2 id="ov-h" style="font-size:1.1rem;">Course progress</h2>
+  <div class="progress-rail"><span data-course-progress-bar style="width:0%;"></span></div>
+  <div class="progress-meta"><span data-course-progress-text>Loading…</span><span data-course-progress-percent></span></div>
+  <div id="progressDetail" style="margin-top:16px;"></div>
+</section>
+
+<section class="card" style="margin-top:28px;" aria-labelledby="lim-h">
+  <h2 id="lim-h">Before you rely on this browser</h2>
+  <p>This course uses <strong>device/browser-local progress only</strong>. Your progress and saved activities remain available when you return using the <strong>same device and browser</strong>, subject to normal browser storage limitations.</p>
+  <ul class="warning-list">
+  <li><strong>Switching devices or browsers may not carry your progress over.</strong> Progress is saved on this device, in this browser only.</li>
+  <li><strong>Clearing browser/site data may remove saved progress.</strong></li>
+  <li><strong>Private/incognito browsing may prevent your progress from being saved at all.</strong></li>
+  <li><strong>You are responsible for keeping a backup of important progress.</strong> Use <em>Export Progress</em> regularly and keep your finished work in your own files.</li>
+</ul>
+<p class="storage-note">There is no learner account and no cloud synchronization. Nobody can recover your progress for you — a backup file you exported is the only way to bring it back.</p>
+</section>
+
+<div class="tools-grid" style="margin-top:22px;">
+  <section class="card" aria-labelledby="exp-h">
+    <h2 id="exp-h" style="font-size:1.15rem;">Export Progress</h2>
+    <p style="font-size:0.9rem;">Downloads a backup file (<code>.json</code>) of this course's saved progress: which lessons you marked as done, where you were in each lesson, your saved responses, table entries and checklist ticks.</p>
+    <p style="font-size:0.85rem;color:var(--ink-soft);">It contains only NDIS VA Foundations data from this browser. It is not a certification record and is not sent anywhere.</p>
+    <div class="btn-row" style="margin-top:0;"><button type="button" class="btn btn-primary" data-export-progress data-message="exportMsg">Export Progress</button></div>
+    <div class="feedback-box" id="exportMsg" role="status" aria-live="polite" hidden></div>
+  </section>
+
+  <section class="card" aria-labelledby="res-h">
+    <h2 id="res-h" style="font-size:1.15rem;">Restore from a backup</h2>
+    <p style="font-size:0.9rem;">Choose a backup file you exported earlier. You'll see what it contains before anything changes. Restoring <strong>replaces</strong> the progress currently saved in this browser.</p>
+    <label class="file-pick" for="restoreFile">Backup file (.json)
+      <input type="file" id="restoreFile" accept=".json,application/json">
+    </label>
+    <div class="feedback-box" id="restoreMessage" role="status" aria-live="polite" hidden></div>
+    <div class="btn-row" id="restoreConfirm" hidden>
+      <button type="button" class="btn btn-primary" id="restoreConfirmBtn">Replace and restore</button>
+      <button type="button" class="btn btn-ghost" id="restoreCancelBtn">Cancel</button>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="clr-h">
+    <h2 id="clr-h" style="font-size:1.15rem;">Clear progress</h2>
+    <p style="font-size:0.9rem;">Removes all NDIS VA Foundations progress and saved responses from this browser. Other PVA courses are not affected.</p>
+    <div class="btn-row" style="margin-top:0;"><button type="button" class="btn btn-danger" id="resetProgress">Clear this course's progress</button></div>
+  </section>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Probinsiyanong VA Free Training — genuinely free, no account required.</p>
+    <p><a href="../progress/">Your progress &amp; backup</a> · <a href="../wattlebird/">Wattlebird practice file</a> · <a href="../certification-submission/">Certification Submission</a></p>
+    <p>Wattlebird Support Services and all of its people, records and scenarios are fictional training data.</p>
+  </div>
+</footer>
+
+<script src="../shared/course-data.js"></script>
+<script src="../shared/progress-ndis.js"></script>
+<script src="../shared/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11.3: Exceptions: Duplicates, Rate Context, Quantity and Missing Records | NDIS VA Foundations — PVA Free Training</title>
+<meta name="description" content="Module 11, Lesson 11.3 of NDIS VA Foundations — Exceptions: Duplicates, Rate Context, Quantity and Missing Records.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+</head>
+<body data-root="../../" data-lesson-id="m11-l3" data-notes-title="NDIS VA Foundations — Lesson 11.3 — Exceptions: Duplicates, Rate Context, Quantity and Missing Records" data-notes-filename="NDIS_M11_Lesson_11-3_Notes.txt">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="route-bar" aria-label="Breadcrumb">
+  <div class="route-track">
+    <span class="crumb">PVA Free Training</span>
+    <span class="sep" aria-hidden="true">/</span>
+    <a class="home-btn" href="../../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z"/></svg> NDIS VA Foundations</a>
+    <span class="sep" aria-hidden="true">/</span><a class="crumb-link" href="../">Module 11</a><span class="sep" aria-hidden="true">/</span><span class="current" aria-current="page">Lesson 11.3</span>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="eyebrow">Module 11 · Lesson 3 of 4</div>
+    <h1>Lesson 11.3 — Exceptions: Duplicates, Rate Context, Quantity and Missing Records</h1>
+    
+    <div class="header-meta"><span data-lesson-state></span></div>
+  </div>
+</header>
+
+<main id="main" class="container" data-draft-scope="m11-l3">
+<aside class="practice-strip no-print" aria-label="Practice file"><span><strong>Practice file:</strong> Wattlebird Sandbox Pack v2.3.4 — fictional training data. Work from a copy.</span><a class="btn btn-secondary" href="../../wattlebird/">Open the Wattlebird practice file</a></aside>
+<nav class="step-nav no-print" id="stepNav" aria-label="Lesson steps"></nav>
+<div class="progress-rail no-print" style="margin-top:6px;"><span id="lessonProgressBar" style="width:0%;"></span></div>
+<section class="step-panel folder-tab" data-step="0" data-label="Progress Reminder" data-tab="Progress Reminder" aria-labelledby="m11-l3-h0">
+  <h2 id="m11-l3-h0">1. Progress Reminder</h2>
+  <div class="md">
+<p>You can now run a complete invoice check. This lesson focuses on choosing the right next action for different findings.</p>
+  </div>
+  
+  <div class="btn-row panel-nav no-print"><a class="btn btn-ghost" href="../">← Module 11 overview</a><button type="button" class="btn btn-primary" data-goto="1">Continue: Why This Matters →</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="1" data-label="Why This Matters" data-tab="Why This Matters" aria-labelledby="m11-l3-h1">
+  <h2 id="m11-l3-h1">2. Why This Matters</h2>
+  <div class="md">
+<p>Different findings require different responses. A duplicate, an unclear participant, an unusual quantity and a management-type issue each have a different administrative path.</p>
+  </div>
+  
+  <div class="btn-row panel-nav no-print"><button type="button" class="btn btn-ghost" data-goto="0">← Back</button><button type="button" class="btn btn-primary" data-goto="2">Continue: Learn →</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="2" data-label="Learn" data-tab="Learn" aria-labelledby="m11-l3-h2">
+  <h2 id="m11-l3-h2">3. Learn</h2>
+  <div class="md">
+<h3>Pattern A — Duplicate</h3>
+<p><strong>Wattlebird example: INV-1004</strong></p>
+<p>The invoice duplicates <code>INV-1001</code>. The delivery evidence supports one service record.</p>
+<p><strong>Classification:</strong> FLAG<br>
+<strong>Next action:</strong> Record both invoice IDs and ask the appropriate owner which record should be retained/disposed of.<br>
+<strong>Closure:</strong> The authorized disposition is recorded.</p>
+<h3>Pattern B — Management Type and Rate Context</h3>
+<p>Management type matters when interpreting a rate difference.</p>
+<p><strong>INV-1005:</strong> P02 is self-managed. The fictional charged rate is $68 and the fictional reference is $60. In this exercise, the correct classification is <strong>ASK</strong>. Ask what fictional rate was agreed and record the response.</p>
+<p><strong>INV-1008:</strong> P04 is plan-managed. The fictional charged rate is $205 against a fictional reference of $190, and email E06 contains an external plan-manager query. In this exercise, the correct classification is <strong>FLAG</strong> and the item routes to Olivia Grant / Plan Manager.</p>
+<p>These figures and routing rules are fictional. Real-world price treatment must be checked against current NDIS material and the provider's approved workflow. The current NDIS pricing page says its 2026–27 maximum-price schedules apply to NDIA-managed and plan-managed participants.</p>
+<h3>Pattern C — Quantity / Service-Delivery Mismatch</h3>
+<p><strong>INV-1011</strong> shows 40 hours.</p>
+<p>Open <code>M11_Service_Delivery</code> and find <strong>SD-011</strong>. It shows 4 delivered hours for the relevant service.</p>
+<p><strong>Classification:</strong> FLAG<br>
+<strong>Next action:</strong> Flag the 40-vs-4 discrepancy against SD-011 and route the correction decision. Keep the invoice record unchanged unless the authorized workflow instructs otherwise.<br>
+<strong>Closure:</strong> The authorized disposition is recorded and the required party/owner is informed.</p>
+<h3>Pattern D — Participant Identity Uncertainty</h3>
+<p><strong>INV-1015</strong> uses participant ID P99, which cannot be found in <code>Participants</code>.</p>
+<p><strong>Classification:</strong> ASK<br>
+<strong>Next action:</strong> Ask who the invoice is for and verify the source record.<br>
+<strong>Closure:</strong> Participant identity and invoice disposition are recorded.</p>
+<p>Identity uncertainty is a stop point for administrative accuracy. A replacement participant should never be guessed.</p>
+<h3>Pattern E — Item Code Uncertainty</h3>
+<p><strong>INV-1019</strong> uses <code>FX-XX-99</code>, which does not exist in the fictional <code>Price_Table</code>.</p>
+<p><strong>Classification:</strong> ASK<br>
+<strong>Next action:</strong> Ask which fictional item code was intended, then route the clarified record through the appropriate workflow.<br>
+<strong>Closure:</strong> The intended item is confirmed and the invoice disposition is recorded.</p>
+<h3>Pattern F — Onboarding / Management Dependency</h3>
+<p><strong>INV-1017</strong> relates to P09 Grace Mitchell. The service agreement is marked <strong>Not started</strong>, while management type is <strong>To be confirmed</strong>.</p>
+<p><strong>Classification:</strong> FLAG<br>
+<strong>Next action:</strong> Ask Rhonda Blake whether services should have started given the onboarding dependency.<br>
+<strong>Closure:</strong> Owner disposition and required onboarding/billing action are recorded.</p>
+  </div>
+  
+  <div class="btn-row panel-nav no-print"><button type="button" class="btn btn-ghost" data-goto="1">← Back</button><button type="button" class="btn btn-primary" data-goto="3">Continue: See It →</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="3" data-label="See It" data-tab="See It" aria-labelledby="m11-l3-h3">
+  <h2 id="m11-l3-h3">4. See It — Wattlebird Example</h2>
+  <div class="md">
+<p>Open <code>Invoice_Batch</code> and compare <strong>INV-1011</strong> with <code>M11_Service_Delivery</code> record <strong>SD-011</strong>.</p>
+<p>The invoice contains the source value of 40 hours. The service-delivery evidence shows 4 delivered hours. The administrative task is to document the discrepancy and route the correction decision.</p>
+<p>The VA preserves the source record while the authorized owner determines the disposition.</p>
+  </div>
+  
+  <div class="btn-row panel-nav no-print"><button type="button" class="btn btn-ghost" data-goto="2">← Back</button><button type="button" class="btn btn-primary" data-goto="4">Continue: Try It →</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="4" data-label="Try It" data-tab="Try It" aria-labelledby="m11-l3-h4">
+  <h2 id="m11-l3-h4">5. Try It</h2>
+  <div class="md">
+<p>Complete detailed notes for:</p>
+<ul>
+<li><strong>INV-1004</strong> — duplicate;</li>
+<li><strong>INV-1005</strong> — self-managed fictional rate context;</li>
+<li><strong>INV-1008</strong> — plan-managed fictional rate concern;</li>
+<li><strong>INV-1011</strong> — quantity discrepancy;</li>
+<li><strong>INV-1015</strong> — participant not found;</li>
+<li><strong>INV-1016</strong> — Sunday/day-type item and fictional funds concern;</li>
+<li><strong>INV-1017</strong> — onboarding/management dependency;</li>
+<li><strong>INV-1019</strong> — item code not found.</li>
+</ul>
+<p>For each, record:</p>
+<ul>
+<li>classification;</li>
+<li>evidence;</li>
+<li>owner/route;</li>
+<li>next action;</li>
+<li>follow-up trigger;</li>
+<li>closure condition.</li>
+</ul>
+  </div>
+  <div class="notes-box no-print">
+  <label for="m11-l3-notes-step5">Your Try It work</label>
+  <p class="notes-help">Work it here or in your own file. Saved in this browser only as you type.</p>
+  <textarea class="text-response" id="m11-l3-notes-step5" data-draft="notes-step5" data-status="m11-l3-notes-step5-status" data-export-label="Your Try It work"></textarea>
+  <div class="save-status" id="m11-l3-notes-step5-status" aria-live="polite"></div>
+</div>
+  <div class="btn-row panel-nav no-print"><button type="button" class="btn btn-ghost" data-goto="3">← Back</button><button type="button" class="btn btn-primary" data-goto="5">Continue: Check Yourself →</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="5" data-label="Check Yourself" data-tab="Check Yourself" aria-labelledby="m11-l3-h5">
+  <h2 id="m11-l3-h5">6. Check Yourself + Model Answer</h2>
+  <div class="md">
+<p><strong>Question 1:</strong> Why should you preserve INV-1011 at 40 hours during the initial check?</p>
+<div class="notes-box no-print">
+  <label for="m11-l3-notes-step6">Your answer — before you open the model answer</label>
+  <p class="notes-help">Write your own answer first, then compare. Saved in this browser only.</p>
+  <textarea class="text-response" id="m11-l3-notes-step6" data-draft="notes-step6" data-status="m11-l3-notes-step6-status" data-export-label="Your answer — before you open the model answer"></textarea>
+  <div class="save-status" id="m11-l3-notes-step6-status" aria-live="polite"></div>
+</div><details class="model-answer"><summary>Model Answer &amp; Reasoning</summary><div class="details-body md"><p>Because 40 hours is the value recorded on the invoice. The learner has evidence that the quantity does not match SD-011, but the correction itself is an authorized decision. Preserving the source value keeps the administrative record factual while the discrepancy is reviewed.</p></div></details>
+<p><strong>Question 2:</strong> What should you do when P99 cannot be found in <code>Participants</code>?</p>
+<details class="model-answer"><summary>Model Answer &amp; Reasoning</summary><div class="details-body md"><p>Ask for clarification and verify the source invoice. Do not guess the participant or substitute another participant.</p></div></details>
+<p><strong>Question 3:</strong> Why are INV-1005 and INV-1008 handled differently in this exercise?</p>
+<details class="model-answer"><summary>Model Answer &amp; Reasoning</summary><div class="details-body md"><p>The fictional records have different management types and different workflow context. INV-1005 is self-managed and requires clarification of the agreed fictional rate. INV-1008 is plan-managed and has a fictional rate concern already queried by the external plan manager, so it is routed as a FLAG through the Wattlebird plan-manager workflow.</p></div></details>
+  </div>
+  
+  <div class="btn-row panel-nav no-print"><button type="button" class="btn btn-ghost" data-goto="4">← Back</button><button type="button" class="btn btn-primary" data-goto="6">Continue: Prove It →</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="6" data-label="Prove It" data-tab="Prove It" aria-labelledby="m11-l3-h6">
+  <h2 id="m11-l3-h6">7. Prove It</h2>
+  <div class="md">
+<p>Your exception notes should answer:</p>
+<blockquote>
+<p><strong>What did I find? Why does it matter? Who owns the next decision? What happens next? When will I follow up? What proves closure?</strong></p>
+</blockquote>
+  </div>
+  <div class="notes-box no-print">
+  <label for="m11-l3-notes-step7">Your Prove It notes</label>
+  <p class="notes-help">Draft or track your Prove It evidence here. Saved in this browser only — save the finished evidence in your own file with the name the lesson gives you.</p>
+  <textarea class="text-response" id="m11-l3-notes-step7" data-draft="notes-step7" data-status="m11-l3-notes-step7-status" data-export-label="Your Prove It notes"></textarea>
+  <div class="save-status" id="m11-l3-notes-step7-status" aria-live="polite"></div>
+</div>
+  <div class="btn-row panel-nav no-print"><button type="button" class="btn btn-ghost" data-goto="5">← Back</button><button type="button" class="btn btn-primary" data-goto="7">Continue: Work Boundary →</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="7" data-label="Work Boundary" data-tab="Work Boundary" aria-labelledby="m11-l3-h7">
+  <h2 id="m11-l3-h7">8. Work Boundary</h2>
+  <div class="md">
+<p>Administrative invoice checking supports the provider's decision-making process. Decisions about service eligibility, funding availability, claim validity, payment approval, rejection, dispute, pricing negotiation or correction require the authority assigned by the provider workflow.</p>
+  </div>
+  
+  <div class="btn-row panel-nav no-print"><button type="button" class="btn btn-ghost" data-goto="6">← Back</button><button type="button" class="btn btn-primary" data-goto="8">Continue: Next Step →</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="8" data-label="Next Step" data-tab="Next Step" aria-labelledby="m11-l3-h8">
+  <h2 id="m11-l3-h8">9. Next Step</h2>
+  <div class="md">
+<p>The final lesson turns your invoice checks and exception notes into a complete evidence set.</p>
+  </div>
+  
+  <div class="btn-row panel-nav no-print"><button type="button" class="btn btn-ghost" data-goto="7">← Back</button><button type="button" class="btn btn-primary" id="markDone" data-label="Mark Lesson 11.3 as done">Mark Lesson 11.3 as done</button></div>
+</section>
+<section class="step-panel folder-tab" data-step="9" data-label="Done" data-tab="Done" data-state="done" aria-labelledby="m11-l3-hdone">
+  <span class="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.6L4 14.1l5 5 11-11-1.5-1.4z"/></svg>Lesson 11.3 complete</span>
+  <h2 id="m11-l3-hdone" style="margin-top:14px;">Lesson 11.3 marked as done</h2>
+  <p>Your completion is saved in this browser. Keep your finished Prove It work in your own files, too.</p>
+  <div class="card" style="margin-top:16px;">
+    <h3 style="font-size:1.05rem;">Keep a copy of your responses</h3>
+    <p style="font-size:0.9rem;">Collect everything you typed in this lesson into one text you can copy, print or download.</p>
+    <div class="btn-row" style="margin-top:0;"><button type="button" class="btn btn-secondary" id="generateNotes">Generate my Lesson 11.3 notes</button></div>
+    <div class="export-box no-print" id="notesExportBox" hidden></div>
+    <div class="btn-row no-print" id="notesExportActions" hidden><button type="button" class="btn btn-ghost" id="downloadNotes">Download as .txt</button></div>
+    <p class="storage-note">Progress lives in this browser only. <a href="../../progress/">Export a progress backup</a> from time to time.</p>
+  </div>
+  <div class="lesson-nav-footer">
+    <a class="btn btn-secondary" href="../">← Module 11 overview</a>
+    <a class="btn btn-primary" href="../../module-11/lesson-11-4/">Start Lesson 11.4 →</a>
+  </div>
+  <p style="margin-top:14px;"><button type="button" class="btn btn-ghost" id="markNotDone" hidden>Mark as not done</button></p>
+</section>
+<nav class="lesson-pager no-print" aria-label="Lesson navigation"><a class="pager-prev" href="../../module-11/lesson-11-2/">← Lesson 11.2 — The Invoice Checking Workflow</a><a class="pager-next" href="../../module-11/lesson-11-4/">Lesson 11.4 — Follow-Up, Closure and M11 Prove It →</a></nav>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Probinsiyanong VA Free Training — genuinely free, no account required.</p>
+    <p><a href="../../progress/">Your progress &amp; backup</a> · <a href="../../wattlebird/">Wattlebird practice file</a> · <a href="../../certification-submission/">Certification Submission</a></p>
+    <p>Wattlebird Support Services and all of its people, records and scenarios are fictional training data.</p>
+  </div>
+</footer>
+
+<script src="../../shared/course-data.js"></script>
+<script src="../../shared/progress-ndis.js"></script>
+<script src="../../shared/ui.js"></script>
+</body>
+</html>
