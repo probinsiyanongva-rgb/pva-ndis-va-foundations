@@ -1,0 +1,8 @@
+.git
+.wrangler
+.gitignore
+.assetsignore
+wrangler.jsonc
+README.md
+BUILD_REPORT.md
+tools
